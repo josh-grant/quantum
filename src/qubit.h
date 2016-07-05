@@ -23,13 +23,17 @@ typedef struct Qubit qubit;
 // * int untangle(qubit *x)
 
 qubit *entangle(int x) {
+
 	// This function takes an int (0-15) and parses it into a base 16 entangled qubit
+
+	// BOUNDS CHECKING
 	if(x < 0 || x > 15) {
 		printf("ARGERROR: INTEGER \"%d\" OUT OF BOUNDS: MUST BE BETWEEN 0 AND 15\n", x);
 		exit(-1);
 	}
 	// POINTER INITIALISATION
 	qubit *newQ = malloc(sizeof(qubit));
+
 	if(newQ == NULL) {
 		printf("MEMERROR: POINTER REFERENCES NULL MEMORY ADDRESS\n");
 		exit(-1);
@@ -55,12 +59,16 @@ qubit *entangle(int x) {
 	} else {
 		newQ->q_3 = false;
 	}
+
 	return newQ;
 }
 
 int untangle(qubit *x) {
+
 	// This function takes a base 16 entangled qubit and parses it to an int
+
 	int newInt = 0;
+
 	if(x->q_0 == true) {
 		newInt += 1;
 	}
@@ -73,6 +81,8 @@ int untangle(qubit *x) {
 	if(x->q_3 == true) {
 		newInt += 8;
 	}
+
 	free(x);
+
 	return newInt;
 }
