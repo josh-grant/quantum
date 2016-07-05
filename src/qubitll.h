@@ -33,8 +33,10 @@ qnode *newNode(qubit *value) {
 	qnode *node = malloc(sizeof(qnode));
 
 	if(node == NULL) {
+
 		printf("MEMERROR: POINTER REFERENCES NULL MEMORY ADDRESS\n");
 		exit(-1);
+		
 	}
 
 	// FIELD INITIALISATION
@@ -50,9 +52,12 @@ qll *newLL() {
 
 	// POINTER INITIALISATION
 	qll *ll = malloc(sizeof(qll));
+
 	if(ll == NULL) {
+
 		printf("MEMERROR: POINTER REFERENCES NULL MEMORY ADDRESS\n");
 		exit(-1);
+
 	}
 
 	// FIELD INITIALISATION
@@ -68,19 +73,25 @@ qnode *travLL(qll *ll, int index) {
 
 	// BOUNDS CHECKING
 	if(ll->head == NULL) {
+
 		printf("DATERR: DATA STRUCTURE EMPTY");
 		exit(-1);
+
 	}
 	if(ll->len <= index) {
+
 		printf("DATERR: INDEX %d OUT OF BOUNDS", index);
 		exit(-1);
+
 	}
 
 	// DATA STRUCTURE TRAVERSION
 	qnode *curr = ll->head;
 
 	for(int i = 0; i < index; i++) {
+
 		curr = curr->next;
+
 	}
 
 	return curr;
@@ -92,11 +103,16 @@ void appLL(qll *ll, qubit *value) {
 
 	// APPEND TO DATA STRUCTURE
 	if(ll->len > 0) {
+
 		qnode *tail = travLL(ll, ll->len);
 		qnode *node = newNode(value);
+
 		tail->next = node;
+
 	} else {
+
 		ll->head = newNode(value);
+
 	}
 
 	// INCREMENT LENGTH
@@ -109,15 +125,21 @@ void purgeLL(qll *ll) {
 
 	// PURGE qll
 	if(ll->len > 0) {
+
 		qnode *curr = ll->head;
 		qnode *next = NULL;
+
 		for(int i = 0; i < ll->len; i++) {
 			next = curr->next;
 			free(curr);
 			curr = next;
 		}
+
 		free(ll);
+
 	} else {
+
 		free(ll);
+
 	}
 }
