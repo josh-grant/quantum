@@ -22,15 +22,15 @@ int main() {
 	printf("TEST COMPLETE");
 
 	// TEST 2
-	qll *testll = newLL();
+	qll *testll = newll();
 
 	for(int i = 0; i < 16; i++) {
 
-		appLL(testll, entangle(i));
+		appll(testll, entangle(i));
 
 	}
 
-	purgeLL(testll);
+	purgell(testll);
 
 	return 0;
 }

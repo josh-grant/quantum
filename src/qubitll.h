@@ -22,8 +22,10 @@ typedef struct QubitLL qll;
 
 // Functions
 // * qnode *newNode(qubit *value)
-// * qll *newLL(void:null)
-// * qnode travLL(int index)
+// * qll *newll(void:null)
+// * qnode travll(int index)
+// * void appll(qll *ll, qubit *value)
+// * void purgell(qll *ll)
 
 qnode *newNode(qubit *value) {
 
@@ -36,7 +38,7 @@ qnode *newNode(qubit *value) {
 
 		printf("MEMERROR: POINTER REFERENCES NULL MEMORY ADDRESS\n");
 		exit(-1);
-		
+
 	}
 
 	// FIELD INITIALISATION
@@ -46,7 +48,7 @@ qnode *newNode(qubit *value) {
 	return node;
 }
 
-qll *newLL() {
+qll *newll() {
 
 	// This function returns an empty qll with len 0;
 
@@ -67,7 +69,7 @@ qll *newLL() {
 	return ll;
 }
 
-qnode *travLL(qll *ll, int index) {
+qnode *travll(qll *ll, int index) {
 
 	// This function returns the nth node in the LL where n = index
 
@@ -97,14 +99,14 @@ qnode *travLL(qll *ll, int index) {
 	return curr;
 }
 
-void appLL(qll *ll, qubit *value) {
+void appll(qll *ll, qubit *value) {
 
 	// This function appends a node of passed value to the end of the passed qll
 
 	// APPEND TO DATA STRUCTURE
 	if(ll->len > 0) {
 
-		qnode *tail = travLL(ll, ll->len);
+		qnode *tail = travll(ll, ll->len);
 		qnode *node = newNode(value);
 
 		tail->next = node;
@@ -119,7 +121,7 @@ void appLL(qll *ll, qubit *value) {
 	ll->len++;
 }
 
-void purgeLL(qll *ll) {
+void purgell(qll *ll) {
 
 	// This function deallocates all memory allocated to the passed qll
 
